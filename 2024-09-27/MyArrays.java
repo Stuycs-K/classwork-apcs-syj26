@@ -23,8 +23,9 @@ public class MyArrays {
       ans[i]=ary1[i];
     }
     for (int i=ary1.length; i<ans.length; i++) {
-      
+      ans[i]=ary2[i-ary1.length];
     }
+    return ans;
   }
 
   public static void main(String[] args) {
@@ -33,6 +34,8 @@ public class MyArrays {
     a = new int[0];
     testCopy(a, returnCopy(a));
     a = new int[]{5, 2, 78, 2, 82, 7};
+    testCopy(a, returnCopy(a));
+    a = new int[]{0, 5, -345, 13523, 2, 0, 5};
     testCopy(a, returnCopy(a));
     int[] b = {1, 200, 3};
     testConcat(a, b);
@@ -45,14 +48,14 @@ public class MyArrays {
     a = new int[]{0, 7, 4};
     b = new int[0];
     testConcat(a, b);
-    a = new int[]{1, 4, 2, 5};
+    a = new int[]{1, 4, 2, -5};
     b = new int[]{76, 3, 8, 12, 543};
     testConcat(a, b);
     a = new int[]{1, 4, 0, 5};
-    b = new int[]{76, 3, 8, 12};
+    b = new int[]{76, -3, 8, 12};
     testConcat(a, b);
-    b = new int[]{1, 4, 2, 5};
-    testConcat(new int[]{1, 4, 2, 5}, b);
+    b = new int[]{1, 4, -2, 5};
+    testConcat(new int[]{1, 4, -2, 5}, b);
   }
 
   public static boolean sameValues(int[] ary1, int[] ary2) {
@@ -67,11 +70,13 @@ public class MyArrays {
     System.out.println(arrayToString(ary2));
     System.out.println("Same values: "+(sameValues(ary1, ary2)));
     System.out.println("Same address: "+(ary1==ary2));
+    System.out.print("\n");
   }
 
   public static void testConcat(int[] ary1, int[] ary2) {
-    System.out.println(arrayToString(ary1));
-    System.out.println(arrayToString(ary2));
-    System.out.println(concatArray(ary1, ary2));
+    System.out.println("Array 1: "+arrayToString(ary1));
+    System.out.println("Array 2: "+arrayToString(ary2));
+    System.out.println("Concatenation: "+arrayToString(concatArray(ary1, ary2)));
+    System.out.print("\n");
   }
 }
