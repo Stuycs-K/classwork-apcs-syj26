@@ -25,11 +25,23 @@ public class ArrayMethods {
       System.out.println(arrToString(test));
       test = new int[3][5];
       System.out.println(arrToString(test));
-      test = new int[][];
-      System.out.println(arrToString(test));
-    
-     
-    
+      System.out.println(arr2DSum(test));
+      test = new int[1][0];
+      System.out.println(arr2DSum(test));
+      test = new int[][]{{4, 34, -43}, {}, {13, 0, 34, -1}, {43, 2}};
+      System.out.println(arr2DSum(test));
+      test = new int[][]{{1, 2, 3}};
+      System.out.println(arr2DSum(test));
+      test = new int[][]{{1}};
+      System.out.println(arr2DSum(test));
+      test = new int[][]{{1,2,3},{4,5,6}};
+      System.out.println(swapRC(test));
+      test = new int[][]{{1,2,3},{4,5,6}, {7, 8, 9}};
+      System.out.println(swapRC(test));
+      test = new int[][]{{1,2,3,4},{5, 6, 7, 8}};
+      System.out.println(swapRC(test));
+      test = new int[4][6];
+      System.out.println(swapRC(test));
     }
     //3. Write arrToString, with a 2D array parameter.
     //Note: Different parameters are allowed with the same function name.
@@ -52,10 +64,10 @@ public class ArrayMethods {
     }
     
     /*Return the sum of all of the values in the 2D array */
-    //public static int arr2DSum(int[][]nums){
+    public static int arr2DSum(int[][]nums){
       //use a nested loop to solve this
-      //return null;//place holder return value so it compiles.
-    //}
+      return null;//place holder return value so it compiles.
+    }
     
     /**Rotate an array by returning a new array with the rows and columns swapped.
       * You may assume the array is rectangular and neither rows nor cols is 0.
