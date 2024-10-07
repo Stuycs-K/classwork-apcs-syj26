@@ -5,7 +5,15 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
-
+    int[][] arr = {{1, 4, 3, 4}, {}, {0, 0, 0}, {-5, 4}, {0, -3, 5, 0, -243}};
+    System.out.println(countZeros2D(arr));
+    System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    int[][] arr = new int[6][3];
+    System.out.println(countZeros2D(arr));
+    System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    int[][] arr = new int[][] {{4, 3, 0}, {-1, 5, -43, 0}};
+    System.out.println(countZeros2D(arr));
+    System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
