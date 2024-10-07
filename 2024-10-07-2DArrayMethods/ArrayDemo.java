@@ -8,12 +8,23 @@ public class ArrayDemo{
     int[][] arr = {{1, 4, 3, 4}, {}, {0, 0, 0}, {-5, 4}, {0, -3, 5, 0, -243}};
     System.out.println("Number of zeros in "+Arrays.deepToString(arr)+": "+countZeros2D(arr));
     System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    System.out.println("htmlTable of "+Arrays.deepToString(arr)+" returns:");
+    System.out.println(htmlTable(arr));
     arr = new int[6][3];
     System.out.println("Number of zeros in "+Arrays.deepToString(arr)+": "+countZeros2D(arr));
     System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    System.out.println("htmlTable of "+Arrays.deepToString(arr)+" returns:");
+    System.out.println(htmlTable(arr));
     arr = new int[][] {{4, 3, 0}, {-1, 5, -43, 0}};
     System.out.println("Number of zeros in "+arrToString(arr)+": "+countZeros2D(arr));
     System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    System.out.println("htmlTable of "+Arrays.deepToString(arr)+" returns:");
+    System.out.println(htmlTable(arr));
+    arr = new int[][]{{1,2},{3}};
+    System.out.println("Number of zeros in "+arrToString(arr)+": "+countZeros2D(arr));
+    System.out.println(arrToString(arr).equals(Arrays.deepToString(arr)));
+    System.out.println("htmlTable of "+Arrays.deepToString(arr)+" returns:");
+    System.out.println(htmlTable(arr));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
