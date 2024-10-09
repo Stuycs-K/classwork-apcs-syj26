@@ -128,11 +128,17 @@ public class ArrayDemo{
   //   Note there is no whitespace in the string, it all one line with no spaces/tabs.
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
-  public static String surround(String s, String tag) {
-    return "<"+tag+">"+s+"</"+tag+">";
-  }
 
   public static String htmlTable(int[][]nums){
-    return "";
+    String str= "";
+    str+="<table>";
+    for (int i=0; i<nums.length; i++) {
+      str+="<tr>";
+      for (int j=0; j<nums[i].length; j++) {
+        str+="<td>"+nums[i][j]+"</td>";
+      }
+      str+="</tr>";
+    }
+    return str+"</table>";
   }
 }
