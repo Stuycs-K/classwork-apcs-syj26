@@ -2,7 +2,7 @@ public class Point{
   private double x,y;
 
   public String toString(){
-    return "WRITE THIS FIRST"
+    return "("+getX()+", "+getY()+")";
   }
 
   //Initialize this Point to have the same values as the other Point.
