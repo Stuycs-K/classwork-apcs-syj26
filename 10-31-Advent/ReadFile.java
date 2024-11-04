@@ -3,6 +3,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class ReadFile {
+  public static boolean isTriangle(int[] s){
+    return (s[0] + s[1] > s[2] && s[1] + s[2] > s[0] && s[2] + s[0] > s[1]);
+  }
+
   public static void main(String[] args) {
     Scanner sc1 = new Scanner("This is a bunch of words");
     while (sc1.hasNext()) {
@@ -42,6 +46,15 @@ public class ReadFile {
     catch (FileNotFoundException e) {
       System.out.println("File not found");
       return;
+    }
+
+    try {
+      File file = new File("inputTri_x.txt");
+      Scanner input = new Scanner(file);
+      if (file.hasNextInt()) {
+        String line=file.nextLine();
+        String[] nums = line.split("x");
+      }
     }
   }
 }
