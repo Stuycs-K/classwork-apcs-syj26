@@ -6,13 +6,13 @@ public class TriangleTester{
   public static void main(String[] args) {
     System.out.println(countTrainglesA("inputTri.txt"));
   }
- 
+
   public static int countTrainglesA(String filename){
     int count=0;
     try {
       File file = new File(filename);
       Scanner input = new Scanner(file);
-      while(input.hasNextLine()){
+      while(input.hasNextInt()){
         if(isTriangle(input.nextLine())) {
             count++;
         }
@@ -27,7 +27,10 @@ public class TriangleTester{
 
   public static boolean isTriangle(String input){
     Scanner sc = new Scanner(input);
-    int s0 = sc.nextInt(); int s1 = sc.nextInt(); int s2 = sc.nextInt();
-    return (s0 + s1 > s2 && s1 + s2 > s0 && s2 + s0 > s1);
+    int[] s=new int[3];
+    for (int i=0; i<3; i++) {
+      s[i] = sc.nextInt();
+    }
+    return (s[0] + s[1] > s[2] && s[1] + s[2] > s[0] && s[2] + s[0] > s[1]);
   }
 }
