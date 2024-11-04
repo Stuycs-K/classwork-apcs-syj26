@@ -13,7 +13,7 @@ public class TriangleTester{
       File file = new File(filename);
       Scanner input = new Scanner(file);
       while(input.hasNextInt()){
-        if(isTriangle(input.nextLine())) {
+        if(isTriangle(lineToIntArray(input.nextLine()))) {
             count++;
         }
       }
@@ -25,12 +25,16 @@ public class TriangleTester{
     }
   }
 
-  public static boolean isTriangle(String input){
+  public static int[] lineToIntArray(String input) {
     Scanner sc = new Scanner(input);
     int[] s=new int[3];
     for (int i=0; i<3; i++) {
       s[i] = sc.nextInt();
     }
+    return s;
+  }
+
+  public static boolean isTriangle(int[] s){
     return (s[0] + s[1] > s[2] && s[1] + s[2] > s[0] && s[2] + s[0] > s[1]);
   }
 }
