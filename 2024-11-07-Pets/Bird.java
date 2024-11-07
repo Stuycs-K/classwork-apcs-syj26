@@ -14,6 +14,7 @@ public class Bird extends Animal {
   }
 
 
+
   //6.Override the speak() method.
   /*WITHOUT REPEATING CODE:
   print the following message replacing the ? with name/age/noise/color/height:
@@ -24,9 +25,14 @@ public class Bird extends Animal {
     I am ? inches tall
   */
   //You can call the old method using super.speak();
-  //public void speak(){}
 
 
+  public double getHeight() {
+    return height;
+  }
+  public String getColor() {
+    return color;
+  }
 
   //7:Override the getName() method so that a bid's name is "The Mighty NAME" instead of "NAME"
   //e.g. "The Mighty Polly" instead of just "Polly"
