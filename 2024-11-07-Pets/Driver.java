@@ -14,5 +14,8 @@ public class Driver {
     Bird b1 = new Bird("chirp", 5, "Name2", 4.5, "brown"); //fine
     //Bird b2 = new Animal("chirp", 7, "Name3"); //error: incompatible types
     Animal a2 = new Bird("yeehaw", 7, "Name4", 15.7, "neon green");
+    a1.speak();
+    b1.speak();
+    a2.speak();
   }
 }
