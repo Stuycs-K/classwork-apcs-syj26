@@ -8,7 +8,9 @@ public class Bird extends Animal {
     //In order to construct the Bird you must first call the superclass constructor
     //This is done by saying: super(parameters)
     //e.g. super("Doug",10,"Squaaaak!");
-
+    super(noise, age, name);
+    this.height = height;
+    this.color = color;
   }
 
 
