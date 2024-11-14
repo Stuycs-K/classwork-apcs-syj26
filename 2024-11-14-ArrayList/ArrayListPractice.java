@@ -33,10 +33,32 @@ public class ArrayListPractice {
     }
   }
 
+  public static void testMakeReversedList(ArrayList<String> arr) {
+    System.out.println("Before: "+arr);
+    System.out.println("After: "+makeReversedList(arr));
+  }
+
+  public static ArrayList<String> makeReversedList( ArrayList<String> original){
+  //return a new ArrayList that is in the reversed order of the original.
+    ArrayList<String> r = new ArrayList<String> (original.size());
+    for (int i=0; i<original.size(); i++) {
+      r.add("");
+    }
+    for (int i = original.size()-1; i >= 0; i--){
+      r.set(original.size()-1-i, original.get(i));
+    }
+    return r;
+  }
+
   public static void main(String[] args) {
     System.out.println(createRandomArray(5));
+    System.out.print("\n");
     for (int i = 0; i < 5; i++){
       testReplaceEmpty(createRandomArray(15));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMakeReversedList(createRandomArray(15));
     }
   }
 
