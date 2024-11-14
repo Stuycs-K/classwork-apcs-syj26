@@ -50,6 +50,35 @@ public class ArrayListPractice {
     return r;
   }
 
+  public static void testMixLists(ArrayList<String> arr1, ArrayList<String> arr2) {
+    System.out.println("Before: "+arr1);
+    System.out.println("Before: "+arr2);
+    System.out.println("After: "+mixLists(arr1, arr2));
+  }
+
+  public static ArrayList<String> mixLists( ArrayList<String> a,  ArrayList<String> b){
+  //return a new ArrayList that has all values of a and b in alternating order that is:
+  //a[0], b[0], a[1], b[1]...
+  //If one list is longer than the other, just attach the remaining values to the end.
+    ArrayList<String> arr = new ArrayList<String>(a.size()+b.size());
+    int minSize=Math.min(a.size(), b.size());
+    for (int i=0; i<minSize; i++) {
+      arr.add(a.get(i));
+      arr.add(b.get(i));
+    }
+    if (a.size()>b.size()) {
+      for (int i=minSize; i<a.size(); i++) {
+        arr.add(a.get(i));
+      }
+    }
+    if (b.size()>a.size()) {
+      for (int i=minSize; i<b.size(); i++) {
+        arr.add(b.get(i));
+      }
+    }
+    return arr;
+  }
+
   public static void main(String[] args) {
     System.out.println(createRandomArray(5));
     System.out.print("\n");
