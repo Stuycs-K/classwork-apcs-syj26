@@ -89,6 +89,10 @@ public class ArrayListPractice {
     for (int i = 0; i < 5; i++){
       testMakeReversedList(createRandomArray(15));
     }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(15), createRandomArray(15));
+    }
   }
 
 }
