@@ -18,9 +18,9 @@ public class ArrayListPractice {
   }
 
   public static void testReplaceEmpty(ArrayList<String> arr) {
-    System.out.println("Before: "+arr);
+    System.out.println("Before: "+testingToString(arr));
     replaceEmpty(arr);
-    System.out.println("After: "+arr);
+    System.out.println("After: "+testingToString(arr));
   }
 
   public static void replaceEmpty( ArrayList<String> original){
@@ -34,8 +34,8 @@ public class ArrayListPractice {
   }
 
   public static void testMakeReversedList(ArrayList<String> arr) {
-    System.out.println("Before: "+arr);
-    System.out.println("After: "+makeReversedList(arr));
+    System.out.println("Before: "+testingToString(arr));
+    System.out.println("After: "+testingToString(makeReversedList(arr)));
   }
 
   public static ArrayList<String> makeReversedList( ArrayList<String> original){
@@ -51,9 +51,25 @@ public class ArrayListPractice {
   }
 
   public static void testMixLists(ArrayList<String> arr1, ArrayList<String> arr2) {
-    System.out.println("Before: "+arr1);
-    System.out.println("Before: "+arr2);
-    System.out.println("After: "+mixLists(arr1, arr2));
+    System.out.println("Before: "+testingToString(arr1));
+    System.out.println("Before: "+testingToString(arr2));
+    System.out.println("After: "+testingToString(mixLists(arr1, arr2)));
+  }
+
+  public static String testingToString(ArrayList<String> arr) {
+    if (arr.size()<=30) {return arr.toString();}
+    String ans = "[";
+    for (int i=0; i<15; i++) {
+      ans+=arr.get(i)+", ";
+    }
+    ans+="... , ";
+    for (int i=arr.size()-15; i<arr.size(); i++) {
+      ans+=arr.get(i);
+      if (i<arr.size()-1) {
+        ans+=", ";
+      }
+    }
+    return ans+"]";
   }
 
   public static ArrayList<String> mixLists( ArrayList<String> a,  ArrayList<String> b){
@@ -93,6 +109,35 @@ public class ArrayListPractice {
     for (int i = 0; i < 5; i++){
       testMixLists(createRandomArray(15), createRandomArray(15));
     }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(15), createRandomArray(10));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(10), createRandomArray(15));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testReplaceEmpty(createRandomArray(200000));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMakeReversedList(createRandomArray(200000));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(200000), createRandomArray(200000));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(200000), createRandomArray(200500));
+    }
+    System.out.print("\n");
+    for (int i = 0; i < 5; i++){
+      testMixLists(createRandomArray(200500), createRandomArray(200000));
+    }
+    System.out.print("\n");
   }
 
 }
