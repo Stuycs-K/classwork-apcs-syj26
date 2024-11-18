@@ -4,7 +4,6 @@ import java.io.*;
 public class Advent2016D4P1 {
     //return sectorID
     public static int sectorID(String line) {
-        int ans=0;
         int left=0; int right=0; int i=line.length()-1; boolean done=false;
         while (i>=0 && !done) {
             if (line.charAt(i)<='9' && line.charAt(i)>='0') {
@@ -39,16 +38,51 @@ public class Advent2016D4P1 {
     
     public static int[][] frequencies(String line) {
         int[][] ans = new int[26][2];
-        for (int i=0; i<26; i++) {
-            ans[i][0]=i; //represents the letter
-        }
         line=cut(line);
         for (int i=0; i<line.length(); i++) {
             if (line.charAt(i)<='z' && line.charAt(i)>='a') {
-                ans[line.charAt(i)-'a'][1]+=1;
+                ans[line.charAt(i)-'a'][0]+=1;
+            }
+        }
+        for (int i=0; i<26; i++) {
+            ans[i][1]=i; //represents the letter
+        }
+        return ans;
+    }
+
+    public static int maxArrayIndex(int[] arr) {
+        int ans=0;
+        int largest=arr[0];
+        for (int i=0; i<arr.length; i++) {
+            if (arr[i]>largest) {
+                largest=arr[i];
+                ans=i;
             }
         }
         return ans;
+    }
+
+    public static String trueChecksum(int[][] freq) {
+        String ans="";
+        char add;
+        int[] arr=new int[26];
+        for (int i=0; i<26; i++) {
+            arr[i]=100*freq[i][0]+(25-freq[i][1]);
+            //hundreds digit(s) is frequency, tens/ones is alphabet in descending order
+            //so smaller letters get bigger %100, thus breaking ties for max
+        }
+        for (int i=0; i<5; i++) {
+            add=(char) ((25-arr[maxArrayIndex(arr)]%100)+'a');
+            //reverses the order-reversing thing i did earlier
+            //so that we actually get what letter it corresponds to
+            ans+=add;
+            arr[maxArrayIndex(arr)]=0;
+        }
+        return ans;
+    }
+
+    public static boolean isReal(String line) {
+        return line.substring(line.length()-6, line.length()-1).equals(trueChecksum(frequencies(line)));
     }
 
     public static void main(String[] args) {
@@ -58,9 +92,9 @@ public class Advent2016D4P1 {
             String line;
             while (sc.hasNextLine()) {
                 line=sc.nextLine();
-                System.out.println(cut(line));
-                System.out.println(sectorID(line));
+                System.out.println(line);
                 System.out.println(Arrays.deepToString(frequencies(line)));
+                System.out.println(trueChecksum(frequencies(line)));
             }
             sc.close();
         } catch (FileNotFoundException ex) {
