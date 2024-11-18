@@ -13,35 +13,40 @@ public class Advent2016D1P1 {
     try {
       File file = new File("2016d1p1.txt");
       Scanner sc = new Scanner(file);
+      while (sc.hasNext()) {
+        step = sc.next();
+        if (step.substring(step.length()-1).equals(",")) {
+          step = step.substring(0, step.length()-1); //get rid of comma
+        }
+        if (step.substring(0, 1).equals("R")) {
+          orientation--;
+        }
+        if (step.substring(0, 1).equals("L")) {
+          orientation++;
+        }
+        if (orientation<0) {orientation+=4;}
+        if (orientation>3) {orientation-=4;}
+        change = Integer.parseInt(step.substring(1));
+        if (orientation==0) {
+          dx+=change;
+        }
+        if (orientation==1) {
+          dy+=change;
+        }
+        if (orientation==2) {
+          dx-=change;
+        }
+        if (orientation==3) {
+          dy-=change;
+        }
+      }
       sc.close();
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
     }
-    while (sc.hasNext()) {
-      step = sc.next();
-      step = step.substring(0, step.length()-1); //get rid of comma
-      if (step.substring(0, 1).equals("R")) {
-        orientation--;
-      }
-      if (step.substring(0, 1).equals("R")) {
-        orientation++;
-      }
-      orientation%=4;
-      change = Integer.parseInt(step.substring(1));
-      if (orientation==0) {
-        dx+=change;
-      }
-      if (orientation==1) {
-        dy+=change;
-      }
-      if (orientation==2) {
-        dx-=change;
-      }
-      if (orientation==3) {
-        dy-=change;
-      }
-    }
     System.out.println(dx+" "+dy);
+    int dist=Math.abs(dx)+Math.abs(dy);
+    System.out.println("manhattan distance: "+dist);
   }
 
 }
