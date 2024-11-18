@@ -12,7 +12,7 @@ public class Advent2016D1P1 {
     String step = "";
     try {
       File file = new File("2016d1p1.txt");
-      sc = new Scanner(file);
+      Scanner sc = new Scanner(file);
       sc.close();
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
