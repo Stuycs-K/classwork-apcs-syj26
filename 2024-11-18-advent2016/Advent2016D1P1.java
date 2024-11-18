@@ -19,7 +19,7 @@ public class Advent2016D1P1 {
     boolean repeated = false;
     visited.add(new Point(position));
     try {
-      File file = new File("2016d1p1.txt");
+      File file = new File("2016d1.txt");
       Scanner sc = new Scanner(file);
       while (sc.hasNext()) {
         step = sc.next();
