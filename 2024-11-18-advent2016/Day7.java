@@ -13,15 +13,25 @@ public class Day7 {
     }
     return false;
   }
+  public static boolean bracketABBA(String s) {
+    boolean inBracket=false; int start, end;
+    for (int i=0; i<s.length(); i++) {
+      if (!inBracket) {
+        inBracket=s.charAt(i)=='[';
+        start=i+1;
+      } else {//if inBracket
+        if (s.charAt(i)==']') {
+          end=i;
+          inBracket=false;
+          if (hasAbba(s.substring(start, end))) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
   public static void main(String[] args) {
-    System.out.println(isABBA("aaaa"));
-    System.out.println(isABBA("xoox"));
-    System.out.println(isABBA("apcs"));
-    System.out.println(hasABBA("aaaa"));
-    System.out.println(hasABBA("xoox"));
-    System.out.println(hasABBA("apcs"));
-    System.out.println(hasABBA("bexoox"));
-    System.out.println(hasABBA("yexooxd"));
     try {
       Scanner sc = new Scanner(new File("2016d7.txt"));
       String line;
