@@ -90,12 +90,38 @@ public class Advent2016D4P1 {
             File file = new File("2016d4.txt");
             Scanner sc = new Scanner(file);
             String line;
+            String cutline;
+            int sum=0;
+            int shift;
+            String realname;
             while (sc.hasNextLine()) {
+                realname="";
                 line=sc.nextLine();
-                System.out.println(line);
-                System.out.println(Arrays.deepToString(frequencies(line)));
-                System.out.println(trueChecksum(frequencies(line)));
+                if (isReal(line)) {
+                    //System.out.println(line);
+                    //System.out.println(trueChecksum(frequencies(line)));
+                    sum+=sectorID(line);
+                    shift=sectorID(line)%26;
+                    cutline=cut(line);
+                    int character;
+                    for (int i=0; i<cutline.length(); i++) {
+                        if (cutline.charAt(i)=='-') {
+                            realname+=" ";
+                        }
+                        else {
+                            character=cutline.charAt(i)+shift;
+                            if (character>'z') {
+                                character-=26;
+                            }
+                            realname+=((char) character);
+                        }
+                    }
+                    if (realname.equals("northpole object storage")) {
+                        System.out.println(realname+" "+sectorID(line));
+                    }
+                }
             }
+            System.out.println(sum);
             sc.close();
         } catch (FileNotFoundException ex) {
             System.out.println("File not found");
