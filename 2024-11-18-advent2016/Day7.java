@@ -14,7 +14,7 @@ public class Day7 {
     return false;
   }
   public static boolean bracketABBA(String s) {
-    boolean inBracket=false; int start, end;
+    boolean inBracket=false; int start=0, end=0;
     for (int i=0; i<s.length(); i++) {
       if (!inBracket) {
         inBracket=(s.charAt(i)=='[');
@@ -23,7 +23,7 @@ public class Day7 {
         if (s.charAt(i)==']') {
           end=i;
           inBracket=false;
-          if (hasAbba(s.substring(start, end))) {
+          if (hasABBA(s.substring(start, end))) {
             return true;
           }
         }
