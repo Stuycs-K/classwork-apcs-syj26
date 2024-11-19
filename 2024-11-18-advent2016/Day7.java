@@ -31,14 +31,37 @@ public class Day7 {
     }
     return false;
   }
+  public static boolean textABBA(String s) {
+    boolean inBracket=false; int start=0, end=0;
+    for (int i=0; i<s.length(); i++) {
+      if (!inBracket && s.charAt(i)=='[') {
+        inBracket=true;
+        end=i;
+        if (hasABBA(s.substring(start, end))) {
+          return true;
+        }
+      } else {//if inBracket
+        if (s.charAt(i)==']') {
+          start=i+1;
+          inBracket=false;
+        }
+      }
+    }
+    if (hasABBA(s.substring(start))) {return true;}
+    return false;
+  }
   public static void main(String[] args) {
     try {
       Scanner sc = new Scanner(new File("2016d7.txt"));
-      String line;
+      String line; int count=0;
       while (sc.hasNextLine()) {
         line=sc.nextLine();
-        //System.out.println(line);
+        if (!bracketABBA(line) && textABBA(line)) {
+          count++;
+          //System.out.println(line);
+        }
       }
+      System.out.println(count);
     } catch (Exception e) {
       System.out.println("File not found");
     }
