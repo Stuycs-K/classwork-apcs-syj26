@@ -78,6 +78,19 @@ public class Advent2016D5P1 {
         }
         return ans;
     }
+    //assume arr1 and arr2 are the same size, add mod n
+    public static int[] add(int[] arr1, int[] arr2, int mod) {
+        int[] ans = new int[arr1.length];
+        int regroup=0;
+        for (int i=arr1.length-1; i>=0; i--) {
+            ans[i]=(arr1[i]+arr2[i]+regroup)%mod;
+            if (arr1[i]+arr2[i]+regroup>=16) {
+                regroup=1;
+            } else {
+                regroup=0;
+            }
+        }
+    }
     public static int[] F(int[] B, int[] C, int[] D) {
         return hexOr(hexAnd(B, C), hexAnd(hexNot(B), D));
     }
