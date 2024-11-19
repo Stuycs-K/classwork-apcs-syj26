@@ -93,10 +93,24 @@ public class Advent2016D4P2 {
             int shift;
             String realname;
             while (sc.hasNextLine()) {
+                realname="";
                 line=sc.nextLine();
                 shift=sectorID(line)%26;
                 line=cut(line);
-                System.out.println(shift);
+                int character;
+                for (int i=0; i<line.length(); i++) {
+                    if (line.charAt(i)=='-') {
+                        realname+=" ";
+                    }
+                    else {
+                        character=line.charAt(i)+shift;
+                        if (character>'z') {
+                            character-=26;
+                        }
+                        realname+=((char) character);
+                    }
+                }
+                System.out.println(realname);
             }
             sc.close();
         } catch (FileNotFoundException ex) {
