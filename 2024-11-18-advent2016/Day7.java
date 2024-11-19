@@ -17,7 +17,7 @@ public class Day7 {
     boolean inBracket=false; int start, end;
     for (int i=0; i<s.length(); i++) {
       if (!inBracket) {
-        inBracket=s.charAt(i)=='[';
+        inBracket=(s.charAt(i)=='[');
         start=i+1;
       } else {//if inBracket
         if (s.charAt(i)==']') {
