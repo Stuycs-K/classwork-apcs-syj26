@@ -16,43 +16,38 @@ public class Day7P2 {
   public static String reverseABA(String aba) {
     return ""+aba.charAt(1)+aba.charAt(0)+aba.charAt(1);
   }
-  public static ArrayList<String> findABA(String s) {
-    ArrayList<String> arr = new ArrayList<String>(1);
+  public static void findABA(String s, ArrayList<String> arr) {
     for (int i=0; i<s.length()-2; i++) {
         if (isABA(s.substring(i, i+3))) {
           arr.add(s.substring(i, i+3));
         }
     }
-    return arr;
   }
-  /* 
-  public static boolean bracketABBA(String s) {
+  public static ArrayList<String> bracketABA(String s) {
     boolean inBracket=false; int start=0, end=0;
+    ArrayList<String> ans = new ArrayList<String>(1);
     for (int i=0; i<s.length(); i++) {
       if (!inBracket) {
         inBracket=(s.charAt(i)=='[');
         start=i+1;
       } else {//if inBracket
         if (s.charAt(i)==']') {
-          end=i;
-          inBracket=false;
-          if (hasABBA(s.substring(start, end))) {
-            return true;
-          }
+            end=i;
+            inBracket=false;
+            findABA(s.substring(start, end), ans);
         }
       }
     }
-    return false;
+    return ans;
   }
-  public static boolean textABBA(String s) {
+  public static ArrayList<String> textABA(String s) {
     boolean inBracket=false; int start=0, end=0;
+    ArrayList<String> ans = new ArrayList<String>(1);
     for (int i=0; i<s.length(); i++) {
       if (!inBracket && s.charAt(i)=='[') {
         inBracket=true;
         end=i;
-        if (hasABBA(s.substring(start, end))) {
-          return true;
-        }
+        findABA(s.substring(start, end), ans);
       } else {//if inBracket
         if (s.charAt(i)==']') {
           start=i+1;
@@ -60,17 +55,30 @@ public class Day7P2 {
         }
       }
     }
-    if (hasABBA(s.substring(start))) {return true;}
+    findABA(s.substring(start), ans);
+    return ans;
+  }
+  public static boolean works(ArrayList<String> bracket, ArrayList<String> text) {
+    String reversed;
+    for (int i=0; i<bracket.size(); i++) {
+        reversed=reverseABA(bracket.get(i));
+        for (int j=0; j<text.size(); j++) {
+            if (reversed.equals(text.get(j))) {
+                return true;
+            }
+        }
+    }
     return false;
   }
-    */
   public static void main(String[] args) {
-    System.out.println(reverseABA("aba"));
     try {
       Scanner sc = new Scanner(new File("2016d7.txt"));
-      String line; int count=0;
+      String line; int count=0; 
       while (sc.hasNextLine()) {
         line=sc.nextLine();
+        if (works(bracketABA(line), textABA(line))) {
+            count++;
+        }
       }
       System.out.println(count);
     } catch (Exception e) {
