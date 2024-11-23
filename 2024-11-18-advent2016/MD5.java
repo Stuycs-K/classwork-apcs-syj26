@@ -24,17 +24,24 @@ public class MD5 {
         return ans;
     }
 
-    public static String hash(String salt, int index) {
+    public static String hash(String salt) {
         try {
-            String hashee=salt+index;
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(hashee.getBytes());
+            md.update(salt.getBytes());
             byte[] digest=md.digest();
             String hex=byteToHex(digest);
             return hex;
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("no such algorithm");
             return null;
+        }
+    }
+
+    public static String stretchedHash(String salt, int n) {
+        if (n<0) {throw new IllegalArgumentException("n should be nonnegative");}
+        else {
+            if (n==0) {return salt;}
+            else {return hash(stretchedHash(salt, n-1));}
         }
     }
 }
