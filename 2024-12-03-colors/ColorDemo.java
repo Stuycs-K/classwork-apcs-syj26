@@ -26,11 +26,12 @@ public class ColorDemo {
     System.out.print("Or "+PINK+"pink"+RESET);
     System.out.print(" or "+BLACK+"black"+RESET);
     System.out.println(" or "+WHITE+"white"+RESET);
+    System.out.println("");
     String[] arr="I could be every color you like".split("");
     String[] designs=new String[]{RED, YELLOW, BLUE, PURPLE, GREEN, PINK, BLACK};
     for (int i=0; i<arr.length; i++) {
       System.out.print(designs[i%designs.length]+arr[i]);
     }
-    System.out.print(RESET);
+    System.out.println(RESET);
   }
 }
