@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Day21 {
     public static String swap(String str, int X, int Y) {
         if (X>Y) {return swap(str, Y, X);}
@@ -15,9 +18,7 @@ public class Day21 {
     public static String rotate(String str, String X) {
         int index=str.indexOf(X);
         str=rotate(str, index+1);
-        if (index>=4) {
-            return rotate(str, 1);
-        }
+        if (index>=4) {return rotate(str, 1);}
         return str;
     }
     public static String reverse(String str) {
@@ -37,22 +38,57 @@ public class Day21 {
         return str.substring(0, Y)+Xth+str.substring(Y);
     }
     public static void main(String[] args) {
-        String str="abcde";
-        str=swap(str, 4, 0);
-        System.out.println(str);
-        str=swap(str, "d", "b");
-        System.out.println(str);
-        str=reverse(str, 0, 4);
-        System.out.println(str);
-        str=rotate(str, -1);
-        System.out.println(str);
-        str=move(str, 1, 4);
-        System.out.println(str);
-        str=move(str, 3, 0);
-        System.out.println(str);
-        str=rotate(str, "b");
-        System.out.println(str);
-        str=rotate(str, "d");
-        System.out.println(str);
+        String str="abcdefgh";
+        try {
+            Scanner sc=new Scanner(new File("2016d21.txt"));
+            while (sc.hasNextLine()) {
+                String command = sc.nextLine();
+                if (command.substring(0, 13).equals("swap position")) {
+                    int X=Integer.parseInt(command.substring(14, 15));
+                    int Y=Integer.parseInt(command.substring(command.length()-1));
+                    str=swap(str, X, Y);
+                    System.out.println("swap position "+X+" with position "+Y);
+                }
+                if (command.substring(0, 11).equals("swap letter")) {
+                    String X=command.substring(12, 13);
+                    String Y=command.substring(command.length()-1);
+                    str=swap(str, X, Y);
+                    System.out.println("swap letter "+X+" with letter "+Y);
+                }
+                if (command.substring(0, 6).equals("rotate")) {
+                    if (command.substring(7, 12).equals("right")) {
+                        int dir=Integer.parseInt(command.substring(13, 14));
+                        str=rotate(str, dir);
+                        System.out.println("rotate right "+dir+" steps");
+                    }
+                    if (command.substring(7, 11).equals("left")) {
+                        int dir=Integer.parseInt(command.substring(12, 13));
+                        str=rotate(str, -1*dir);
+                        System.out.println("rotate left "+dir+" steps");
+                    }
+                    if (command.substring(7, 12).equals("based")) {
+                        String X=command.substring(command.length()-1);
+                        str=rotate(str, X);
+                        System.out.println("rotate based on position of letter "+X);
+                    }
+                }
+                if (command.substring(0, 7).equals("reverse")) {
+                    int X=Integer.parseInt(command.substring(18, 19));
+                    int Y=Integer.parseInt(command.substring(command.length()-1));
+                    str=reverse(str, X, Y);
+                    System.out.println("reverse positions "+X+" through "+Y);
+                }
+                if (command.substring(0, 4).equals("move")) {
+                    int X=Integer.parseInt(command.substring(14, 15));
+                    int Y=Integer.parseInt(command.substring(command.length()-1));
+                    str=move(str, X, Y);
+                    System.out.println("move position "+X+" to position "+Y);
+                }
+            }
+            System.out.println(str);
+        } catch (FileNotFoundException ex) {
+            System.out.println("file not found");
+        }
+        
     }
 }
