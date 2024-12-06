@@ -30,4 +30,23 @@ public class Wizard extends Adventurer {
   public int getSpecialMax() {
     return 100;
   }
+
+  public String attack(Adventurer other) {
+    return null;
+  }
+
+  //heall or buff the target adventurer
+  public String support(Adventurer other) {
+    return null;
+  }
+
+  //heall or buff self
+  public String support() {
+    return null;
+  }
+
+  //hurt or hinder the target adventurer, consume some special resource
+  public String specialAttack(Adventurer other) {
+    return null;
+  }
 }
