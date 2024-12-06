@@ -31,8 +31,13 @@ public class Wizard extends Adventurer {
     return 100;
   }
 
+  //hurt or hinder the target adventurer
   public String attack(Adventurer other) {
-    return null;
+    int decHP=(int)(Math.random()*(other.getHP()+1));
+    int decSpecial=(int)(Math.random()*(other.getSpecial()/2));
+    other.setHP(other.getHP()-decHP);
+    other.setSpecial(other.getSpecial()-decSpecial);
+    return getName()+" decreased "+other.getName()+"'s HP by "+decHP+", decreased "+other.getName()+"'s "+getSpecialName()+" by "+decSpecial;
   }
 
   //heall or buff the target adventurer
