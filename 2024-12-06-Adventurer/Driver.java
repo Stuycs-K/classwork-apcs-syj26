@@ -9,5 +9,8 @@ public class Driver{
     Adventurer p3 = new Wizard("ashley", 15, 70);
     printInfo(p1); printInfo(p2); printInfo(p3);
     System.out.println(p1.attack(p2));
+    printInfo(p2);
+    System.out.println(p3.support(p2));
+    printInfo(p2);
   }
 }

@@ -42,7 +42,11 @@ public class Wizard extends Adventurer {
 
   //heall or buff the target adventurer
   public String support(Adventurer other) {
-    return null;
+    int incHP=(int)(Math.random()*(other.getHP()+1));
+    int incSpecial=(int)(Math.random()*(other.getSpecial()/2));
+    other.setHP(other.getHP()+incHP);
+    other.setSpecial(other.getSpecial()+incSpecial);
+    return getName()+" increased "+other.getName()+"'s HP by "+incHP+", increased "+other.getName()+"'s "+getSpecialName()+" by "+incSpecial;
   }
 
   //heall or buff self
