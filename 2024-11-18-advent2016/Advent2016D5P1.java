@@ -145,6 +145,7 @@ public class Advent2016D5P1 {
             C=new int[] {8, 11, 3, 13, 7, 1, 5, 13};
             D=new int[] {1, 13, 14, 3, 10, 7, 3, 9};
             System.out.println(Arrays.toString(I(B, C, D)));
+            
             index++;
             count=8;//delete later obvs
         }

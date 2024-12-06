@@ -36,9 +36,47 @@ public class Day8 {
         row(screen, 0, 4);
         col(screen, 1, 1);
         System.out.println(Arrays.deepToString(screen));
+        screen = new boolean[6][50];
         try {
+            String line;
             Scanner sc=new Scanner(new File("2016d8.txt"));
-        } catch (Exception e) {
+            while (sc.hasNextLine()) {
+                line=sc.nextLine();
+                if (line.substring(0, 2).equals("re")) {
+                    line=line.substring(5);
+                    rect(screen, Integer.parseInt(line.split("x")[0]), Integer.parseInt(line.split("x")[1]));
+                    System.out.println(line.split("x")[0]+" "+line.split("x")[1]);
+                }
+                else {
+                    if (line.substring(0, 8).equals("rotate c")) {
+                        line=line.substring(line.indexOf("=")+1);
+                        col(screen, Integer.parseInt(line.split(" by ")[0]), Integer.parseInt(line.split(" by ")[1]));
+                        System.out.println(line.split(" by ")[0]+" "+line.split(" by ")[1]);
+                    }
+                    else {
+                        if (line.substring(0, 8).equals("rotate r")) {
+                            line=line.substring(line.indexOf("=")+1);
+                            row(screen, Integer.parseInt(line.split(" by ")[0]), Integer.parseInt(line.split(" by ")[1]));
+                            System.out.println(line.split(" by ")[0]+" "+line.split(" by ")[1]);
+                        }
+                    }
+                }
+            }
+            int count=0;
+            for (int i=0; i<screen.length; i++) {
+                for (int j=0; j<screen[0].length; j++) {
+                    if (screen [i][j]==false) {
+                        System.out.print(" ");
+                    }
+                    if (screen[i][j]==true) {
+                        count++;
+                        System.out.print("1");
+                    }
+                }
+                System.out.println("");
+            }
+            System.out.println(count);
+        } catch (FileNotFoundException e) {
             System.out.println("exception");
         }
     }
