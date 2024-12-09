@@ -33,9 +33,9 @@ public class Wizard extends Adventurer {
 
   //hurt or hinder the target adventurer
   public String attack(Adventurer other) {
-    int decHP=(int)(Math.random()*(other.getHP()+1));
-    other.setHP(other.getHP()-decHP);
-    return getName()+" decreased "+other.getName()+"'s HP by "+decHP;
+    int decHP=(int)(Math.random()*4);
+    other.applyDamage(decHP);
+    return this+" smacks "+other+" with their magic staff and decreases "+other+"'s HP by "+decHP;
   }
 
   //heall or buff the target adventurer
@@ -44,7 +44,7 @@ public class Wizard extends Adventurer {
     int incSpecial=(int)(Math.random()*(other.getSpecial()/2));
     other.setHP(other.getHP()+incHP);
     other.setSpecial(other.getSpecial()+incSpecial);
-    return getName()+" increased "+other.getName()+"'s HP by "+incHP+", increased "+other.getName()+"'s "+getSpecialName()+" by "+incSpecial;
+    return getName()+" increased "+other.getName()+"'s HP by "+incHP+", increased "+other.getName()+"'s "+getSpecialName()+" by "+incSpecial+".";
   }
 
   //heall or buff self
