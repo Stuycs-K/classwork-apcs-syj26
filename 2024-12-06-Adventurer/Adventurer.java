@@ -87,7 +87,7 @@ public abstract class Adventurer{
 
   //Set Methods
   public void setHP(int health){
-      this.HP = Math.min(health, maxHP);
+      this.HP = health;
   }
 
   public void setName(String s){
