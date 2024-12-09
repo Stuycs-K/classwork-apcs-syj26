@@ -1,20 +1,23 @@
 public class Wizard extends Adventurer {
-  private int mana;
+  private int mana, manaMax;
 
   //constructors
   public Wizard(String name) {
     super(name);
     mana=50;
+    manaMax=100;
   }
 
   public Wizard(String name, int hp) {
     super(name, hp);
     mana=50;
+    manaMax=100;
   }
 
   public Wizard(String name, int hp, int mana) {
     super(name, hp);
     this.mana=mana;
+    manaMax=100;
   }
 
   //methods
@@ -28,36 +31,50 @@ public class Wizard extends Adventurer {
     mana=n;
   }
   public int getSpecialMax() {
-    return 100;
+    return manaMax;
   }
 
   //hurt or hinder the target adventurer
   public String attack(Adventurer other) {
     int decHP=(int)(Math.random()*4);
     other.applyDamage(decHP);
-    return this+" smacks "+other+" with their magic staff and decreases "+other+"'s HP by "+decHP;
+    String[] messages=new String[]{" smacks "+other+" with their magic staff", 
+    " karate kicks "+other+" in the head", 
+    " calls "+other+" a failure, dealing emotional damage", 
+    " turns off "+other+"'s WiFi"};
+    int index=(int)(Math.random()*messages.length);
+    return this+messages[index]+", decreasing "+other+"'s HP by "+decHP+".";
   }
 
   //heall or buff the target adventurer
   public String support(Adventurer other) {
-    int incHP=(int)(Math.random()*(other.getHP()+1));
-    int incSpecial=(int)(Math.random()*(other.getSpecial()/2));
+    int incHP=(int)(Math.random()*4);
+    int incSpecial=(int)(Math.random()*10);
     other.setHP(other.getHP()+incHP);
-    other.setSpecial(other.getSpecial()+incSpecial);
+    other.restoreSpecial(incSpecial);
     return getName()+" increased "+other.getName()+"'s HP by "+incHP+", increased "+other.getName()+"'s "+getSpecialName()+" by "+incSpecial+".";
   }
 
   //heall or buff self
   public String support() {
-    int incHP=(int)(Math.random()*(getHP()+1));
+    int incHP=(int)(Math.random()*(getmaxHP()/2));
+    int incSpecial=(int)(Math.random()*10);
     setHP(getHP()+incHP);
-    return "increased own HP by "+incHP;
+    restoreSpecial(incSpecial);
+    return "increased own HP by "+incHP+", increased own "+getSpecialName()+" by "+incSpecial+".";
   }
 
   //hurt or hinder the target adventurer, consume some special resource
   public String specialAttack(Adventurer other) {
-    int decSpecial=(int)(Math.random()*(other.getSpecial()/2));
-    other.setSpecial(other.getSpecial()-decSpecial);
-    return getName()+" decreased "+other.getName()+"'s "+getSpecialName()+" by "+decSpecial;
+    int cost=(int)(Math.random()*(getSpecialMax()/10));
+    if (cost<=getSpecial()) {
+      int decHP=(int)(Math.random()*10);
+      other.applyDamage(decHP);
+      setSpecial(getSpecial()-cost);
+      return getName()+" decreased "+other.getName()+"'s HP by "+decHP+", consuming "+cost+" "+getSpecialName();
+    } else {
+      return "Not enough mana to attack. Instead, "+attack(other);
+    }
+    
   }
 }
