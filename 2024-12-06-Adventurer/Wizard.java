@@ -73,7 +73,7 @@ public class Wizard extends Adventurer {
 
   //hurt or hinder the target adventurer, consume some special resource
   public String specialAttack(Adventurer other) {
-    int cost=(int)(Math.random()*(getSpecialMax()/10));
+    int cost=(int)(Math.random()*(getSpecialMax()/2));
     if (cost<=getSpecial()) {
       int decHP=(int)(Math.random()*5+5);
       other.applyDamage(decHP);
@@ -82,9 +82,9 @@ public class Wizard extends Adventurer {
       " throws an explosive potion at "+other,
       " spreads sparkly magical glitter in the air"};
       int index=(int)(Math.random()*messages.length);
-      return this+messages[index]+", decreasing "+other+"'s HP by "+decHP+", consuming "+cost+" "+getSpecialName();
+      return this+messages[index]+", decreasing "+other+"'s HP by "+decHP+", consuming "+cost+" "+getSpecialName()+".";
     } else {
-      return "Not enough mana to attack. Instead, "+attack(other);
+      return "Not enough "+getSpecialName()+" to attack. Instead, "+attack(other);
     }
     
   }
