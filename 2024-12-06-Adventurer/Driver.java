@@ -12,5 +12,7 @@ public class Driver{
     printInfo(p2);
     System.out.println(p3.support(p2));
     printInfo(p2);
+    System.out.println(p2.support());
+    System.out.println(p2.specialAttack(p1));
   }
 }
