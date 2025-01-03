@@ -21,6 +21,8 @@ public class Words {
       } else {
         return ten1[n/10-2];
       }
+    } else if (n<1000) {
+      return teens[n/100]+" hundred and "+toWords(n%100);
     } else {
       return "too big";
     }
