@@ -22,7 +22,21 @@ public class Words {
         return ten1[n/10-2];
       }
     } else if (n<1000) {
-      return teens[n/100]+" hundred and "+toWords(n%100);
+      if (n%100 != 0) {
+        return teens[n/100]+" hundred and "+toWords(n%100);
+      } else {
+        return teens[n/100]+" hundred";
+      }
+    } else if (n<1000000) {
+      if (n%1000 != 0) {
+        if (n%1000<100) {
+          return toWords(n/1000)+" thousand "+toWords(n%1000);
+        } else {
+          return toWords(n/1000)+" thousand, "+toWords(n%1000);
+        }
+      } else {
+        return toWords(n/1000)+" thousand";
+      }
     } else {
       return "too big";
     }
@@ -39,7 +53,7 @@ public class Words {
     makeWords(1, "", "abcdefghijklmnopqrstuvwxyz");
     System.out.println("");
     makeWords(0, "", "abcdefghijklmnopqrstuvwxyz");
-    for (int i=0; i<100; i++) {
+    for (int i=0; i<10000; i++) {
       System.out.println(toWords(i));
     }
   }
