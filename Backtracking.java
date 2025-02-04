@@ -32,12 +32,13 @@ public class Backtracking {
   }
 
   public static boolean groupSum(int start, int[] nums, int target) {
-    if (start==nums.length-1) {
+    if (start==nums.length) {
       return (target==0);
     } else {
       return (groupSum(start+1, nums, target) || groupSum(start+1, nums, target-nums[start]));
     }
   }
+
   public static void main(String[] args) {
     System.out.println(countNoDoubleLetterWords(3, "", "abc"));
     System.out.println(countNoDoubleLetterWords(3, "", "abcdefg"));
@@ -48,5 +49,9 @@ public class Backtracking {
     System.out.println(countNoDoubleLetterWords(5, "", "abcdefghij"));
     System.out.println(countNoDoubleLetterWords(7, "", "abcdefghijk"));
     System.out.println(countNoDoubleLetterWords(4, "", "abcdefghijklmnopqrstu"));
+    System.out.println(groupSum(0, new int[]{1, 5, 8, 10}, 15));
+    System.out.println(groupSum(0, new int[]{1, 5, 8, 10}, 3));
+    System.out.println(groupSum(0, new int[]{1, 5, -8, 10}, -2));
+    System.out.println(groupSum(0, new int[]{1, 5, -8, 10}, 3));
   }
 }
