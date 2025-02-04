@@ -31,6 +31,12 @@ public class Backtracking {
   // e.g. countNoDoubleLetterWords(5,"","abc")
   }
   public static void main(String[] args) {
-
+    System.out.println(countNoDoubleLetterWords(3, "", "abc"));
+    System.out.println(countNoDoubleLetterWords(0, "", "abc"));
+    System.out.println(countNoDoubleLetterWords(1, "", "a"));
+    System.out.println(countNoDoubleLetterWords(10, "", "a"));
+    System.out.println(countNoDoubleLetterWords(5, "", "abcde"));
+    System.out.println(countNoDoubleLetterWords(5, "", "abcdefghij"));
+    System.out.println(countNoDoubleLetterWords(7, "", "abcdefghijk"));
   }
 }
