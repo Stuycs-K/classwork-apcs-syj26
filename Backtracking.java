@@ -10,8 +10,10 @@ public class Backtracking {
   *Repetition allowed except when letters are adjacent e.g. "abababa" is allowed.
   */
   public static long countNoDoubleLetterWords(int length,String word, String letters){
+    //Hint: not a wrapper method, but you must call it starting with "" as your word
+    // e.g. countNoDoubleLetterWords(5,"","abc")
     if (length==0) {
-      return 1;
+      return 1L;
     } else if (word.length()==0){
       long sum=0;
       for (int i=0; i<letters.length(); i++) {
@@ -27,16 +29,24 @@ public class Backtracking {
       }
       return sum;
     }
-  //Hint: not a wrapper method, but you must call it starting with "" as your word
-  // e.g. countNoDoubleLetterWords(5,"","abc")
+  }
+
+  public static boolean groupSum(int start, int[] nums, int target) {
+    if (start==nums.length-1) {
+      return (target==0);
+    } else {
+      return (groupSum(start+1, nums, target) || groupSum(start+1, nums, target-nums[start]));
+    }
   }
   public static void main(String[] args) {
     System.out.println(countNoDoubleLetterWords(3, "", "abc"));
+    System.out.println(countNoDoubleLetterWords(3, "", "abcdefg"));
     System.out.println(countNoDoubleLetterWords(0, "", "abc"));
     System.out.println(countNoDoubleLetterWords(1, "", "a"));
     System.out.println(countNoDoubleLetterWords(10, "", "a"));
     System.out.println(countNoDoubleLetterWords(5, "", "abcde"));
     System.out.println(countNoDoubleLetterWords(5, "", "abcdefghij"));
     System.out.println(countNoDoubleLetterWords(7, "", "abcdefghijk"));
+    System.out.println(countNoDoubleLetterWords(4, "", "abcdefghijklmnopqrstu"));
   }
 }
