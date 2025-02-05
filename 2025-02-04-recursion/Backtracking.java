@@ -39,6 +39,22 @@ public class Backtracking {
     }
   }
 
+  public static boolean splitArray(int start, int[] nums, int sum1, int sum2) {
+    if (start==0) {
+      int sum=0;
+      for (int i=0; i<nums.length; i++) {
+        sum+=nums[i];
+      }
+      if (sum%2!=0) {
+        return false;
+      }
+    }
+    if (start==nums.length) {
+      return sum1==sum2;
+    }
+    return (splitArray(start+1, nums, sum1+nums[start], sum2) || splitArray(start+1, nums, sum1, sum2+nums[start]));
+  }
+
   public static void main(String[] args) {
     System.out.println(countNoDoubleLetterWords(3, "", "abc"));
     System.out.println(countNoDoubleLetterWords(3, "", "abcdefg"));
