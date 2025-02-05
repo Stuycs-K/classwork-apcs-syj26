@@ -69,5 +69,8 @@ public class Backtracking {
     System.out.println(groupSum(0, new int[]{1, 5, 8, 10}, 3));
     System.out.println(groupSum(0, new int[]{1, 5, -8, 10}, -2));
     System.out.println(groupSum(0, new int[]{1, 5, -8, 10}, 3));
+    System.out.println(splitArray(0, new int[]{1, 5, -8, 10}, 0, 0));
+    System.out.println(splitArray(0, new int[]{5, 3, 4, 8, 2, 0, 8, 10, 2024, 46, 20, 66, 42, 73}, 0, 0));
+    System.out.println(splitArray(0, new int[]{7, 4, 7, -3, 9, 2}, 0, 0));
   }
 }
